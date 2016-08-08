@@ -17,4 +17,5 @@ captures/
 .idea/workspace.xml
 .idea/libraries
 gen-external-apklibs
-
+.DS_Store
+.gradle

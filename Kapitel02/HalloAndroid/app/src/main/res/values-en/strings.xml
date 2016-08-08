@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_settings">Einstellungen</string>
+    <string name="fertig">Done</string>
+    <string name="hallo">Hello %1$s. Nice to meet you.</string>
+    <string name="vorname_nachname">name surname</string>
+    <string name="weiter">Proceed</string>
+    <string name="willkommen">Hello. Thank you for starting this app. What is your name?</string>
+    <string name="app_name">Hello Android!</string>
+</resources>
