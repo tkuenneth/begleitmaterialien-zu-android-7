@@ -10,18 +10,20 @@
 
     <TextView
         android:id="@+id/nachricht"
+        android:lines="2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
 
     <EditText
         android:id="@+id/eingabe"
+        android:hint="@string/vorname_nachname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/vorname_nachname"
-        android:singleLine="true"
+        android:lines="1"
         android:inputType="textCapWords"
-        />
+        android:imeOptions="actionNext"
+    />
 
     <Button
         android:id="@+id/weiter_fertig"

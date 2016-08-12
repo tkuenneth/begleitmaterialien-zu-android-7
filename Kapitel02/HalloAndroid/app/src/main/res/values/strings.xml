@@ -18,10 +18,7 @@ Hallo %1$s. Ich freue mich, Sie kennenzulernen.
     <!-- Beschriftungen für Schaltflächen -->
     <string name="weiter">Weiter</string>
     <string name="fertig">Fertig</string>
-    <string name="vorname_nachname">Vorname Nachname</string>
 
-    <!-- aus der generierten Datei -->
-    <string name="hello_world" translatable="false">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="vorname_nachname">Vorname Nachname</string>
 
 </resources>

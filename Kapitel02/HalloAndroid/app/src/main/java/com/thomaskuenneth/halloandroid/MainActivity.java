@@ -4,8 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,6 +25,15 @@ public class MainActivity extends Activity {
         nachricht = (TextView) findViewById(R.id.nachricht);
         weiterFertig = (Button) findViewById(R.id.weiter_fertig);
         eingabe = (EditText) findViewById(R.id.eingabe);
+        eingabe.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (weiterFertig.isEnabled()) {
+                    weiterFertig.performClick();
+                }
+                return true;
+            }
+        });
 
         ersterKlick = true;
         nachricht.setText(R.string.willkommen);
@@ -46,19 +54,16 @@ public class MainActivity extends Activity {
                 }
             }
         });
-
         eingabe.addTextChangedListener(new TextWatcher() {
 
             @Override
             public void onTextChanged(CharSequence s, int start,
-                                      int before,
-                                      int count) {
+                                      int before, int count) {
             }
 
             @Override
             public void beforeTextChanged(CharSequence s, int start,
-                                          int count,
-                                          int after) {
+                                          int count, int after) {
             }
 
             @Override
@@ -67,18 +72,5 @@ public class MainActivity extends Activity {
             }
         });
         weiterFertig.setEnabled(false);
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        return id == R.id.action_settings || super.onOptionsItemSelected(item);
     }
 }
