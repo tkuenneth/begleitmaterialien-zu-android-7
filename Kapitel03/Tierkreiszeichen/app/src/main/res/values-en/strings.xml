@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Zodiac</string>
+    <string name="format_string">MM/dd</string>
+    <string name="interval">%1$s to %2$s</string>
+    <string name="wikipedia_url">http://en.m.wikipedia.org/wiki/%1$s_(astrology)</string>
+
+	<string name="aries">aries</string> 
+	<string name="taurus">taurus</string> 
+	<string name="gemini">gemini</string> 
+	<string name="cancer">cancer</string> 
+	<string name="leo">leo</string> 
+	<string name="virgo">virgo</string> 
+	<string name="libra">libra</string> 
+	<string name="scorpius">scorpius</string> 
+	<string name="sagittarius">sagittarius</string> 
+	<string name="capricornus">capricornus</string> 
+	<string name="aquarius">aquarius</string> 
+	<string name="pisces">pisces</string> 
+    
+</resources>

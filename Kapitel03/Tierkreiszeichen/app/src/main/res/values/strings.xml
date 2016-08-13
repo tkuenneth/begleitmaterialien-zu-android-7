@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tierkreiszeichen</string>
+    <string name="format_string">dd. MMMM</string>
+    <string name="interval">%1$s bis %2$s</string>
+    <string name="wikipedia_url">http://de.m.wikipedia.org/wiki/%1$s_(Tierkreiszeichen)</string>
+
+    <string name="hint">Eine Grafik</string>
+
+    <string name="aries">Widder</string>
+    <string name="taurus">Stier</string>
+    <string name="gemini">Zwillinge</string>
+    <string name="cancer">Krebs</string>
+    <string name="leo">Löwe</string>
+    <string name="virgo">Jungfrau</string>
+    <string name="libra">Waage</string>
+    <string name="scorpius">Skorpion</string>
+    <string name="sagittarius">Schütze</string>
+    <string name="capricornus">Steinbock</string>
+    <string name="aquarius">Wassermann</string>
+    <string name="pisces">Fische</string>
+
+</resources>
