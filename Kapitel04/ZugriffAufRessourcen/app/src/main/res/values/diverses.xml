@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="bool1">true</bool>
+    <bool name="bool2">false</bool>
+
+    <integer name="adams">42</integer>
+    <color name="eine_farbe">#ff123456</color>
+
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FragmentDemo1</string>
+    <string name="text1">Ich bin ein Fragment</string>
+    <string name="text2">Ich bin eine Activity</string>
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ActivityLifecycleDemo</string>
+    <string name="button_new">Neue Activity</string>
+    <string name="button_finish">Schließen</string>
+    <string name="msg">Ich habe die laufende Nummer %1$d</string>
+</resources>
