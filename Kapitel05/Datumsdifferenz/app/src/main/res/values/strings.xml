@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Datumsdifferenz</string>
+    <string name="calc">Berechnen</string>
+    <string name="template">%1$d Tage</string>
+</resources>

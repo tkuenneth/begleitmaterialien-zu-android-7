@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ListenerDemo</string>
+    <string name="status">Status umkehren</string>
+    <string name="checkbox">eine CheckBox</string>
+</resources>

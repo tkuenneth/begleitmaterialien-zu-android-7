@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WidgetDemo</string>
+    <string name="hint">Name einer Klasse</string>
+    <string name="apply">Übernehmen</string>
+    <string name="error">Klasse %1$s nicht gefunden</string>
+</resources>
