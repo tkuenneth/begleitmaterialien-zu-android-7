@@ -3,4 +3,7 @@
 
     <string name="app_name">Leeres Projekt</string>
 
+    <!-- wird in Kapitel 5: Positionierung von Bedienelementen mit ViewGroups verwendet -->
+    <string name="hello">Hallo!</string>
+
 </resources>

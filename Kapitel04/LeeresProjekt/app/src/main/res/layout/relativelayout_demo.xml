@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    >
+
+    <Button
+        android:id="@+id/button_cancel"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:text="Abbruch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+    <Button
+        android:id="@+id/button_ok"
+        android:layout_toLeftOf="@id/button_cancel"
+        android:layout_alignTop="@id/button_cancel"
+        android:text="OK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+    <EditText
+        android:layout_above="@id/button_ok"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+</RelativeLayout>
