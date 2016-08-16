@@ -3,7 +3,8 @@
     <string name="app_name">PreferencesDemo</string>
 
     <string name="button">Einstellungen</string>
-    <string name="template">Checkbox 1 hat den Status %1$s. Checkbox 2 hat den Status %2$s. Das Textfeld enthält den Text %3$s.</string>
+    <string name="template">Checkbox 1 hat den Status %1$s. Checkbox 2 hat den Status %2$s. Der Wert des Textfelds ist %3$s.</string>
+    <string name="empty">leer</string>
 
     <string name="cat1">Kategorie 1</string>
     <string name="title_cb1">erste Checkbox</string>

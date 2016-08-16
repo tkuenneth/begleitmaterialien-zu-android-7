@@ -9,7 +9,8 @@ import android.os.Bundle;
 
 public class AlertFragment extends DialogFragment {
 
-    public static final String TAG = AlertFragment.class.getSimpleName();
+    public static final String TAG =
+            AlertFragment.class.getSimpleName();
 
     private DialogInterface.OnClickListener l;
 
@@ -23,8 +24,9 @@ public class AlertFragment extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        // Builder instantiieren
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        // Builder instanziieren
+        AlertDialog.Builder builder =
+                new AlertDialog.Builder(getActivity());
         // Builder konfigurieren
         builder.setTitle(R.string.app_name);
         builder.setMessage(R.string.message);

@@ -10,7 +10,8 @@ import java.util.Calendar;
 
 public class DatePickerFragment extends DialogFragment {
 
-    public static final String TAG = DatePickerFragment.class.getSimpleName();
+    public static final String TAG =
+            DatePickerFragment.class.getSimpleName();
 
     private DatePickerDialog.OnDateSetListener l;
 
@@ -30,6 +31,7 @@ public class DatePickerFragment extends DialogFragment {
         int month = c.get(Calendar.MONTH);
         int day = c.get(Calendar.DAY_OF_MONTH);
         // einen DatePickerDialog erzeugen und zurückliefern
-        return new DatePickerDialog(getActivity(), l, year, month, day);
+        return new DatePickerDialog(getActivity(),
+                l, year, month, day);
     }
 }

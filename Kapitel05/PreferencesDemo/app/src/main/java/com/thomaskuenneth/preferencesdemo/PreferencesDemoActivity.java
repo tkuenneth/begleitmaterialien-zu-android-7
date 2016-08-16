@@ -24,7 +24,8 @@ public class PreferencesDemoActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PreferencesDemoActivity.this, SettingsActivity.class);
+                Intent intent = new Intent(PreferencesDemoActivity.this,
+                        SettingsActivity.class);
                 startActivityForResult(intent, RQ_SETTINGS);
             }
         });
@@ -33,7 +34,8 @@ public class PreferencesDemoActivity extends Activity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode,
+                                    int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (RQ_SETTINGS == requestCode) {
             updateTextView();
@@ -46,8 +48,12 @@ public class PreferencesDemoActivity extends Activity {
         boolean cb1 = prefs.getBoolean("checkbox_1", false);
         boolean cb2 = prefs.getBoolean("checkbox_2", false);
         String et1 = prefs.getString("edittext_1", "");
+        if (et1.length() < 1) {
+            et1 = getString(R.string.empty);
+        }
         textview.setText(getString(R.string.template,
                 Boolean.toString(cb1), Boolean.toString(cb2), et1));
+
 //        SharedPreferences.Editor e = prefs.edit();
 //        e.putBoolean("checkbox_1", cb1);
 //        e.putBoolean("checkbox_2", cb2);

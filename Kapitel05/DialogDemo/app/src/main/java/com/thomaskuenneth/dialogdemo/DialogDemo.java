@@ -25,12 +25,14 @@ public class DialogDemo extends Activity
         textview = (TextView) findViewById(R.id.textview);
         // DatePicker
         datePickerFragment = new DatePickerFragment();
-        final Button buttonDatePicker = (Button) findViewById(R.id.button_datepicker);
+        final Button buttonDatePicker =
+                (Button) findViewById(R.id.button_datepicker);
         buttonDatePicker.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                datePickerFragment.show(getFragmentManager(), DatePickerFragment.TAG);
+                datePickerFragment.show(getFragmentManager(),
+                        DatePickerFragment.TAG);
             }
         });
         // Alert
@@ -40,13 +42,15 @@ public class DialogDemo extends Activity
 
             @Override
             public void onClick(View v) {
-                alertFragment.show(getFragmentManager(), AlertFragment.TAG);
+                alertFragment.show(getFragmentManager(),
+                        AlertFragment.TAG);
             }
         });
     }
 
     @Override
-    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+    public void onDateSet(DatePicker view,
+                          int year, int monthOfYear, int dayOfMonth) {
         textview.setText(getString(R.string.button_datepicker));
     }
 
