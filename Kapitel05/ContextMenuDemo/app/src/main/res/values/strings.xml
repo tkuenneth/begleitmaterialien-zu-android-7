@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ContextMenuDemo</string>
+    <string name="item1">Menüeintrag #1</string>
+    <string name="item2">Menüeintrag #2</string>
+    <string name="button">Tippen und halten</string>
+    
+</resources>

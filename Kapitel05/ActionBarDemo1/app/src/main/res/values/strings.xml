@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ActionBarDemo1</string>
+    <string name="empty">kein Menüelement angeklickt</string>
+    <string name="today">heute</string>
+    <string name="month">Monat</string>
+    <string name="week">Woche</string>
+    <string name="day">Tag</string>
+
+</resources>

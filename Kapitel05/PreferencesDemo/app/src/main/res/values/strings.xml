@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PreferencesDemo</string>
+
+    <string name="button">Einstellungen</string>
+    <string name="template">Checkbox 1 hat den Status %1$s. Checkbox 2 hat den Status %2$s. Das Textfeld enthält den Text %3$s.</string>
+
+    <string name="cat1">Kategorie 1</string>
+    <string name="title_cb1">erste Checkbox</string>
+    <string name="summary_cb1">eine Beschreibung</string>
+    <string name="title_cb2">zweite Checkbox</string>
+    <string name="summary_cb2">noch eine Beschreibung</string>
+
+    <string name="cat2">Kategorie 2</string>
+    <string name="title_et1">eine Texteingabe</string>
+    <string name="summary_et1">und noch eine Beschreibung</string>
+    <string name="dialog_title_et1">Überschrift</string>
+
+</resources>
