@@ -4,5 +4,6 @@
     <string name="app_name">MenuDemo</string>
     <string name="item1">Menüeintrag #1</string>
     <string name="item2">Menüeintrag #2</string>
-    
+    <string name="item3">Menüeintrag #3</string>
+
 </resources>

@@ -18,7 +18,6 @@ public class ActionBarDemo1Activity extends Activity {
         super.onStart();
         ActionBar ab = getActionBar();
         if (ab != null) {
-            ab.setDisplayShowHomeEnabled(true);
             ab.setDisplayHomeAsUpEnabled(true);
         }
     }
@@ -41,7 +40,8 @@ public class ActionBarDemo1Activity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         textview.setText(item.getTitle());
         if (android.R.id.home == item.getItemId()) {
-            Toast.makeText(this, R.string.app_name, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.app_name,
+                    Toast.LENGTH_SHORT).show();
         }
         return true;
     }

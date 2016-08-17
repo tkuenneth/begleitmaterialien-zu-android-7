@@ -29,9 +29,8 @@ public class MenuDemoActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.item1:
-                tv.setText(item.getTitle());
-                return true;
             case R.id.item2:
+            case R.id.item3:
                 tv.setText(item.getTitle());
                 return true;
             default:
