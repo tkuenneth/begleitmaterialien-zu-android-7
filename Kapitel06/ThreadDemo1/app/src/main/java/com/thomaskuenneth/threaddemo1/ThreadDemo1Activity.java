@@ -4,15 +4,18 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 
-
 public class ThreadDemo1Activity extends Activity {
 
     private static final String TAG =
             ThreadDemo1Activity.class.getSimpleName();
 
+    private volatile boolean keepRunning;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Log.d(TAG, Thread.currentThread().getName());
 
         Runnable r = new Runnable() {
             @Override
@@ -21,15 +24,33 @@ public class ThreadDemo1Activity extends Activity {
             }
         };
         Thread t = new Thread(r);
-        // Thread t = new Thread(fibRunner());
-        // Thread t = new Thread(sleepTester());
         t.start();
         Log.d(TAG, "Thread wurde gestartet");
-        Log.d(TAG, Thread.currentThread().getName());
+
+        Thread fib = new Thread(fibRunner());
+        fib.start();
+
+        new Thread(bewegeGegner1()).start();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // Thread erzeugen
+        Thread t = new Thread(bewegeGegner2());
+        keepRunning = true;
+        // Thread starten
+        t.start();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        keepRunning = false;
     }
 
     private Runnable fibRunner() {
-        Runnable r = new Runnable() {
+        return new Runnable() {
 
             @Override
             public void run() {
@@ -50,23 +71,38 @@ public class ThreadDemo1Activity extends Activity {
                 }
             }
         };
-        return r;
     }
 
-    private Runnable sleepTester() {
-        Runnable r = new Runnable() {
+    private Runnable bewegeGegner1() {
+        return new Runnable() {
             @Override
             public void run() {
                 while (true) {
-                    Log.d(TAG, "bewege Gegner");
+                    Log.i(TAG, "bewege Gegner 1");
                     try {
                         Thread.sleep(3000);
                     } catch (InterruptedException e) {
-                        // Unterbrechungen ignorieren
+                        Log.e(TAG, "sleepTester()", e);
                     }
                 }
             }
         };
-        return r;
     }
+
+    private Runnable bewegeGegner2() {
+        return new Runnable() {
+            @Override
+            public void run() {
+                while (keepRunning) {
+                    Log.i(TAG, "bewege Gegner 2");
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        Log.e(TAG, "sleepTester()", e);
+                    }
+                }
+            }
+        };
+    }
+
 }

@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">UIThreadDemo</string>
     <string name="button">Berechnung starten</string>
-    <string name="checkbox">eine CheckBox</string>
+    <string name="checkbox">Berechnung mit sleep()</string>
     <string name="begin">Berechnung hat begonnen</string>
     <string name="end">Berechnung ist fertig</string>
 </resources>

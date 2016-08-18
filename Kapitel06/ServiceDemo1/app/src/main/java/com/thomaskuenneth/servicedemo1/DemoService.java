@@ -35,7 +35,8 @@ public class DemoService extends Service {
                 Log.d(TAG, missedCalls + " verpasste Anrufe");
             }
         };
-        getContentResolver().registerContentObserver(CallLog.Calls.CONTENT_URI,
+        getContentResolver().registerContentObserver(
+                CallLog.Calls.CONTENT_URI,
                 false, contentObserver);
     }
 
@@ -51,11 +52,15 @@ public class DemoService extends Service {
         String[] projection = {Calls._ID};
         String selection = Calls.TYPE + " = ?";
         String[] selectionArgs = {Integer.toString(Calls.MISSED_TYPE)};
-        Cursor c = getContentResolver().query(CallLog.Calls.CONTENT_URI,
-                projection, selection, selectionArgs, null);
-        if (c != null) {
-            missedCalls = c.getCount();
-            c.close();
+        try {
+            Cursor c = getContentResolver().query(CallLog.Calls.CONTENT_URI,
+                    projection, selection, selectionArgs, null);
+            if (c != null) {
+                missedCalls = c.getCount();
+                c.close();
+            }
+        } catch (SecurityException e) {
+            Log.e(TAG, "getMissedCalls()", e);
         }
         return missedCalls;
     }
