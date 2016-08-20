@@ -20,8 +20,8 @@ public class ServiceDemo1Activity extends Activity {
                     RQ_CALL_LOG);
         } else {
             startService();
+            finish();
         }
-        finish();
     }
 
     @Override
@@ -31,7 +31,8 @@ public class ServiceDemo1Activity extends Activity {
         switch (requestCode) {
             case RQ_CALL_LOG: {
                 if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                        && grantResults[0] ==
+                        PackageManager.PERMISSION_GRANTED) {
                     startService();
                 }
                 finish();
