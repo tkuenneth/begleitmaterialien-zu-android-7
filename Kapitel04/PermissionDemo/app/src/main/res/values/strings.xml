@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">PermissionDemo</string>
+    <string name="template">Sie haben %1$d verpasste Anrufe</string>
+    <string name="explain1">Bitte gewähren Sie der App die Berechtigung</string>
+    <string name="explain2">Die Berechtigung wurde verweigert</string>
+    <string name="understood">Verstanden</string>
+</resources>
