@@ -60,8 +60,8 @@ public class PermissionDemoActivity extends Activity {
                                            int[] grantResults) {
         if (requestCode == RQ_CALL_LOG) {
             bt.setVisibility(View.GONE);
-            if ((grantResults.length > 0)
-                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            if ((grantResults.length > 0) && grantResults[0]
+                    == PackageManager.PERMISSION_GRANTED) {
                 outputMissedCalls();
             } else {
                 tv.setText(R.string.explain2);
@@ -71,7 +71,7 @@ public class PermissionDemoActivity extends Activity {
 
     private void requestPermission() {
         requestPermissions(new String[]
-                {Manifest.permission.READ_CALL_LOG},
+                        {Manifest.permission.READ_CALL_LOG},
                 RQ_CALL_LOG);
     }
 
@@ -84,7 +84,8 @@ public class PermissionDemoActivity extends Activity {
         int missedCalls = 0;
         String[] projection = {CallLog.Calls._ID};
         String selection = CallLog.Calls.TYPE + " = ?";
-        String[] selectionArgs = {Integer.toString(CallLog.Calls.MISSED_TYPE)};
+        String[] selectionArgs =
+                {Integer.toString(CallLog.Calls.MISSED_TYPE)};
         try {
             Cursor c = getContentResolver().query(CallLog.Calls.CONTENT_URI,
                     projection, selection, selectionArgs, null);
