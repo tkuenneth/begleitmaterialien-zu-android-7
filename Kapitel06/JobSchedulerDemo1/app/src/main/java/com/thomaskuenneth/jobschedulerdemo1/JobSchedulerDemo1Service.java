@@ -6,7 +6,8 @@ import android.util.Log;
 
 public class JobSchedulerDemo1Service extends JobService {
 
-    private static final String TAG = JobSchedulerDemo1Service.class.getSimpleName();
+    private static final String TAG =
+            JobSchedulerDemo1Service.class.getSimpleName();
 
     @Override
     public boolean onStartJob(final JobParameters params) {

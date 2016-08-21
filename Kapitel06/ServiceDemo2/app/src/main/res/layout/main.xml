@@ -3,13 +3,16 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="8dp"
     >
 
     <EditText
         android:id="@+id/edittext"
         android:inputType="numberDecimal"
+        android:imeOptions="actionDone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="@string/hint"
         />
 
     <Button
@@ -21,6 +24,8 @@
 
     <TextView
         android:id="@+id/textview"
+        android:text="@string/info"
+        android:paddingTop="6dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />

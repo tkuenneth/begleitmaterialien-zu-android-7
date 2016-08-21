@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.widget.Toast;
 
 public class ServiceDemo1Activity extends Activity {
 
@@ -19,8 +20,7 @@ public class ServiceDemo1Activity extends Activity {
                             {Manifest.permission.READ_CALL_LOG},
                     RQ_CALL_LOG);
         } else {
-            startService();
-            finish();
+            startServiceAndFinish();
         }
     }
 
@@ -28,20 +28,21 @@ public class ServiceDemo1Activity extends Activity {
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[],
                                            int[] grantResults) {
-        switch (requestCode) {
-            case RQ_CALL_LOG: {
-                if (grantResults.length > 0
-                        && grantResults[0] ==
-                        PackageManager.PERMISSION_GRANTED) {
-                    startService();
-                }
-                finish();
+        if (requestCode == RQ_CALL_LOG) {
+            if ((grantResults.length > 0)
+                    && (grantResults[0] ==
+                    PackageManager.PERMISSION_GRANTED)){
+                startServiceAndFinish();
+            } else {
+                Toast.makeText(this, R.string.denied,
+                        Toast.LENGTH_LONG).show();
             }
         }
     }
 
-    private void startService() {
+    private void startServiceAndFinish() {
         Intent intent = new Intent(this, DemoService.class);
         startService(intent);
+        finish();
     }
 }

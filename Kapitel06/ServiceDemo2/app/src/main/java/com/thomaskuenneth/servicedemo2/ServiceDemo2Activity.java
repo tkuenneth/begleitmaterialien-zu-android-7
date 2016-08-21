@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -23,7 +24,8 @@ public class ServiceDemo2Activity extends Activity {
     private ServiceConnection mConnection = new ServiceConnection() {
 
         @Override
-        public void onServiceConnected(ComponentName name, IBinder service) {
+        public void onServiceConnected(ComponentName name,
+                                       IBinder service) {
             LocalBinder binder = (LocalBinder) service;
             mService = binder.getService();
         }
@@ -45,11 +47,26 @@ public class ServiceDemo2Activity extends Activity {
             @Override
             public void onClick(View v) {
                 if (mService != null) {
-                    // Service aufrufen und Fakultät berechnen lassen
-                    int n = Integer.parseInt(edittext.getText().toString());
-                    int fak = mService.fakultaet(n);
-                    textview.setText(getString(R.string.template, n, fak));
+                    try {
+                        int n =  Integer.parseInt(
+                                        edittext.getText().toString());
+                        // Service aufrufen und Fakultät berechnen lassen
+                        int fak = mService.fakultaet(n);
+                        textview.setText(getString(R.string.template,
+                                n, fak));
+                    } catch (NumberFormatException e) {
+                        textview.setText(R.string.info);
+                    }
                 }
+            }
+        });
+        edittext.setOnEditorActionListener(
+                new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i,
+                                          KeyEvent keyEvent) {
+                button.performClick();
+                return true;
             }
         });
     }

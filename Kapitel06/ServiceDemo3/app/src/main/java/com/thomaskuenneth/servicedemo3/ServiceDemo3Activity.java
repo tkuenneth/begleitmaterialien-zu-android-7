@@ -12,6 +12,7 @@ import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -20,34 +21,17 @@ import android.widget.TextView;
 
 public class ServiceDemo3Activity extends Activity {
 
+    private static final String TAG =
+            ServiceDemo3Activity.class.getSimpleName();
+
     public static final int MSG_FAKULTAET_IN = 1;
     public static final int MSG_FAKULTAET_OUT = 2;
 
-    private static final String TAG = ServiceDemo3Activity.class.getSimpleName();
-
     private Messenger mService = null;
-    private TextView textview;
-
-    private final Messenger mMessenger = new Messenger(new IncomingHandler());
-
-    private class IncomingHandler extends Handler {
-        @Override
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case MSG_FAKULTAET_OUT:
-                    int n = msg.arg1;
-                    int fakultaet = msg.arg2;
-                    Log.d(TAG, "Fakultaet: " + fakultaet);
-                    textview.setText(getString(R.string.template, n, fakultaet));
-                    break;
-                default:
-                    super.handleMessage(msg);
-            }
-        }
-    }
-
     private ServiceConnection mConnection = new ServiceConnection() {
-        public void onServiceConnected(ComponentName className, IBinder service) {
+
+        public void onServiceConnected(ComponentName className,
+                                       IBinder service) {
             mService = new Messenger(service);
         }
 
@@ -60,30 +44,47 @@ public class ServiceDemo3Activity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        textview = (TextView) findViewById(R.id.textview);
+        final TextView textview = (TextView) findViewById(R.id.textview);
         final EditText edittext = (EditText) findViewById(R.id.edittext);
         final Button button = (Button) findViewById(R.id.button);
+        final Messenger mMessenger =
+                new Messenger(new IncomingHandler(this, textview));
         button.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mService != null) {
-                    int n = Integer.parseInt(edittext.getText().toString());
-                    Message msg = Message.obtain(null, MSG_FAKULTAET_IN, n, 0);
-                    msg.replyTo = mMessenger;
                     try {
+                        int n = Integer.parseInt(
+                                edittext.getText().toString());
+                        Message msg = Message.obtain(null,
+                                MSG_FAKULTAET_IN,
+                                n, 0);
+                        msg.replyTo = mMessenger;
                         mService.send(msg);
+                    } catch (NumberFormatException e) {
+                        textview.setText(R.string.info);
                     } catch (RemoteException e) {
                         Log.d(TAG, "send()", e);
                     }
                 }
             }
         });
+        edittext.setOnEditorActionListener(
+                new TextView.OnEditorActionListener() {
+                    @Override
+                    public boolean onEditorAction(TextView textView, int i,
+                                                  KeyEvent keyEvent) {
+                        button.performClick();
+                        return true;
+                    }
+                });
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        ComponentName c = new ComponentName("com.thomaskuenneth.servicedemo3_service",
+        ComponentName c = new ComponentName(
+                "com.thomaskuenneth.servicedemo3_service",
                 "com.thomaskuenneth.servicedemo3_service.RemoteService");
         Intent i = new Intent();
         i.setComponent(c);
@@ -101,6 +102,32 @@ public class ServiceDemo3Activity extends Activity {
         if (mService != null) {
             unbindService(mConnection);
             mService = null;
+        }
+    }
+
+    private static class IncomingHandler extends Handler {
+
+        private final Context ctx;
+        private final TextView tv;
+
+        private IncomingHandler(Context ctx, TextView tv) {
+            this.ctx = ctx;
+            this.tv = tv;
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case MSG_FAKULTAET_OUT:
+                    int n = msg.arg1;
+                    int fakultaet = msg.arg2;
+                    Log.d(TAG, "Fakultaet: " + fakultaet);
+                    tv.setText(ctx.getString(R.string.template,
+                            n, fakultaet));
+                    break;
+                default:
+                    super.handleMessage(msg);
+            }
         }
     }
 }

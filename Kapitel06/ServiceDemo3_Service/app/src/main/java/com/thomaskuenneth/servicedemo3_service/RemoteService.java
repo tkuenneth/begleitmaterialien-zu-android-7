@@ -11,44 +11,47 @@ import android.util.Log;
 
 public class RemoteService extends Service {
 
-	public static final int MSG_FAKULTAET_IN = 1;
-	public static final int MSG_FAKULTAET_OUT = 2;
+    private static final String TAG = RemoteService.class.getSimpleName();
 
-	private static final String TAG = RemoteService.class.getSimpleName();
+    public static final int MSG_FAKULTAET_IN = 1;
+    public static final int MSG_FAKULTAET_OUT = 2;
 
-	private final Messenger mMessenger = new Messenger(new IncomingHandler());
+    private final Messenger mMessenger =
+            new Messenger(new IncomingHandler());
 
-	private class IncomingHandler extends Handler {
-		@Override
-		public void handleMessage(Message msg) {
-			switch (msg.what) {
-			case MSG_FAKULTAET_IN:
-				Integer n = msg.arg1;
-				Log.d(TAG, "Eingabe: " + n);
-				int fak = fakultaet(n);
-				Messenger m = msg.replyTo;
-				Message msg2 = Message.obtain(null, MSG_FAKULTAET_OUT, n, fak);
-				try {
-					m.send(msg2);
-				} catch (RemoteException e) {
-					Log.e(TAG, "send()", e);
-				}
-				break;
-			default:
-				super.handleMessage(msg);
-			}
-		}
-	}
+    @Override
+    public IBinder onBind(Intent intent) {
+        return mMessenger.getBinder();
+    }
 
-	@Override
-	public IBinder onBind(Intent intent) {
-		return mMessenger.getBinder();
-	}
+    private static class IncomingHandler extends Handler {
 
-	private int fakultaet(int n) {
-		if (n <= 0) {
-			return 1;
-		}
-		return n * fakultaet(n - 1);
-	}
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case MSG_FAKULTAET_IN:
+                    Integer n = msg.arg1;
+                    Log.d(TAG, "Eingabe: " + n);
+                    int fak = fakultaet(n);
+                    Messenger m = msg.replyTo;
+                    Message msg2 = Message.obtain(null,
+                            MSG_FAKULTAET_OUT, n, fak);
+                    try {
+                        m.send(msg2);
+                    } catch (RemoteException e) {
+                        Log.e(TAG, "send()", e);
+                    }
+                    break;
+                default:
+                    super.handleMessage(msg);
+            }
+        }
+
+        private int fakultaet(int n) {
+            if (n <= 0) {
+                return 1;
+            }
+            return n * fakultaet(n - 1);
+        }
+    }
 }
