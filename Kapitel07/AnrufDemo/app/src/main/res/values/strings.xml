@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog">Wähldialog</string>
+    <string name="sofort">sofort wählen</string>
+    <string name="app_name">AnrufDemo</string>
+</resources>
