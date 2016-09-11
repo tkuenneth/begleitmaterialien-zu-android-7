@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SensorDemo1</string>
+    <string name="no_seonsor">Kein Helligkeitssensor vorhanden</string>
+    <string name="template">%1$s (Hersteller: %2$s, Version: %3$s)\n</string>
+    <string name="sunny">sonnig</string>
+</resources>
