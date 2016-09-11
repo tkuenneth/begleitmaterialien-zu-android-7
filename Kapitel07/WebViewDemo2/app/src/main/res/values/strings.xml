@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">WebViewDemo2</string>
+    <string name="hint">URL eingeben</string>
+    <string name="prev">\u3c</string>
+    <string name="next">\u3e</string>
+
+</resources>

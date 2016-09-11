@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">WebserviceDemo1</string>
+    <string name="hint">zu kürzende URL</string>
+    <string name="shorten">Kürzen</string>
+    <string name="show">Anzeigen</string>
+
+</resources>

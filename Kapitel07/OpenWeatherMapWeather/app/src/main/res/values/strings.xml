@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">OpenWeatherMap Weather</string>
+    <string name="button">Anzeigen</string>
+    <string name="temp_template">%1d \u2103</string>
+    <string name="hint">Name einer Stadt</string>
+    <string name="content_description">Wetter als Bild</string>
+
+</resources>

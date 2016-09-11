@@ -3,10 +3,11 @@
     package="com.thomaskuenneth.anrufdemo">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application
-        android:icon="@drawable/icon"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:allowBackup="true">
+        android:allowBackup="false">
         <activity android:name=".AnrufDemoActivity"
                   android:label="@string/app_name">
             <intent-filter>

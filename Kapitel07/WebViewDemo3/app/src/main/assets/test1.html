@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello, World!</title>
+    </head>
+    <body>
+    <h1>Hallo.</h1>
+    <form>
+        <label for="name">Bitte geben Sie Ihren Namen ein.</label>
+        <input type="text" id="name" value="">
+        <input type="button" value="Weiter" onclick="hello()">
+    </form>
+    <script type="application/javascript">
+        function hello() {
+            var input = document.getElementById("name");
+            document.write("Hallo, " + input.value);
+        }
+    </script>
+    </body>
+</html>

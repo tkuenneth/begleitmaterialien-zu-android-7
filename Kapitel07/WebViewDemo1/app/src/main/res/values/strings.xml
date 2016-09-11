@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">WebViewDemo1</string>
+    <string name="intent">Intent</string>
+    <string name="html">HTML</string>
+    <string name="base64">Base64</string>
+
+</resources>

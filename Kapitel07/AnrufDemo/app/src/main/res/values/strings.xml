@@ -2,5 +2,7 @@
 <resources>
     <string name="dialog">Wähldialog</string>
     <string name="sofort">sofort wählen</string>
+    <string name="sms">SMS erstellen</string>
     <string name="app_name">AnrufDemo</string>
+    <string name="no_permission">Keine Berechtigung</string>
 </resources>
