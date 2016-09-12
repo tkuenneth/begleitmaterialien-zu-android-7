@@ -6,6 +6,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -14,13 +15,14 @@ import java.util.List;
 
 public class SensorDemo1Activity extends Activity {
 
-    private static final String TAG = SensorDemo1Activity.class.getSimpleName();
+    private static final String TAG =
+            SensorDemo1Activity.class.getSimpleName();
 
     private TextView textview;
-
     private SensorManager manager;
     private Sensor sensor;
     private SensorEventListener listener;
+    private SensorManager.DynamicSensorCallback callback;
 
     private HashMap<String, Boolean> hm;
 
@@ -30,11 +32,20 @@ public class SensorDemo1Activity extends Activity {
         hm = new HashMap<>();
         setContentView(R.layout.main);
         textview = (TextView) findViewById(R.id.textview);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        textview.setText("");
         // Liste der vorhandenen Sensoren ausgeben
-        manager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        manager = getSystemService(SensorManager.class);
         List<Sensor> sensors = manager.getSensorList(Sensor.TYPE_ALL);
         for (Sensor s : sensors) {
-            textview.append(getString(R.string.template, s.getName(), s.getVendor(), s.getVersion()));
+            textview.append(getString(R.string.template,
+                    s.getName(),
+                    s.getVendor(),
+                    s.getVersion()));
         }
         // Helligkeitssensor ermitteln
         sensor = manager.getDefaultSensor(Sensor.TYPE_LIGHT);
@@ -70,14 +81,36 @@ public class SensorDemo1Activity extends Activity {
         } else {
             textview.append(getString(R.string.no_seonsor));
         }
+
+        // Callback für dynamische Sensoren
+        callback = null;
+        if (manager.isDynamicSensorDiscoverySupported()) {
+            callback = new SensorManager.DynamicSensorCallback() {
+
+                @Override
+                public void onDynamicSensorConnected(Sensor sensor) {
+                    textview.append(getString(R.string.connected,
+                            sensor.getName()));
+                }
+
+                @Override
+                public void onDynamicSensorDisconnected(Sensor sensor) {
+                    textview.append(getString(R.string.disconnected,
+                            sensor.getName()));
+                }
+            };
+            manager.registerDynamicSensorCallback(callback, new Handler());
+        }
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        // Listener entfernen
+    protected void onPause() {
+        super.onPause();
         if (sensor != null) {
             manager.unregisterListener(listener);
+        }
+        if (callback != null) {
+            manager.unregisterDynamicSensorCallback(callback);
         }
     }
 }

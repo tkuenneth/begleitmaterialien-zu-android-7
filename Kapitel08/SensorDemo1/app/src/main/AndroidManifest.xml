@@ -3,9 +3,9 @@
     package="com.thomaskuenneth.sensordemo1">
 
     <application
-        android:icon="@drawable/icon"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:allowBackup="true">
+        android:allowBackup="false">
         <activity
             android:name=".SensorDemo1Activity"
             android:label="@string/app_name">

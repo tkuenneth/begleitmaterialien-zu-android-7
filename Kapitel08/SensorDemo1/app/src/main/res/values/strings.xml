@@ -4,4 +4,6 @@
     <string name="no_seonsor">Kein Helligkeitssensor vorhanden</string>
     <string name="template">%1$s (Hersteller: %2$s, Version: %3$s)\n</string>
     <string name="sunny">sonnig</string>
+    <string name="connected">Dynamischer Sensor %1$s verbunden\n</string>
+    <string name="disconnected">Dynamischer Sensor %1$s getrennt\n</string>
 </resources>
