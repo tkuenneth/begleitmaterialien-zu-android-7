@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.widget.TextView;
-
 import java.util.HashMap;
 import java.util.List;
 
@@ -45,7 +44,8 @@ public class SensorDemo1Activity extends Activity {
             textview.append(getString(R.string.template,
                     s.getName(),
                     s.getVendor(),
-                    s.getVersion()));
+                    s.getVersion(),
+                    Boolean.toString(s.isDynamicSensor())));
         }
         // Helligkeitssensor ermitteln
         sensor = manager.getDefaultSensor(Sensor.TYPE_LIGHT);
@@ -53,7 +53,8 @@ public class SensorDemo1Activity extends Activity {
             listener = new SensorEventListener() {
 
                 @Override
-                public void onAccuracyChanged(Sensor sensor, int accuracy) {
+                public void onAccuracyChanged(Sensor sensor,
+                                              int accuracy) {
                     Log.d(TAG, "onAccuracyChanged(): " + accuracy);
                 }
 
@@ -63,7 +64,8 @@ public class SensorDemo1Activity extends Activity {
                         float light = event.values[0];
                         String text = Float.toString(light);
                         if ((SensorManager.LIGHT_SUNLIGHT <= light)
-                                && (light <= SensorManager.LIGHT_SUNLIGHT_MAX)) {
+                                && (light <=
+                                SensorManager.LIGHT_SUNLIGHT_MAX)) {
                             text = getString(R.string.sunny);
                         }
                         // jeden Wert nur einmal ausgeben
@@ -99,7 +101,8 @@ public class SensorDemo1Activity extends Activity {
                             sensor.getName()));
                 }
             };
-            manager.registerDynamicSensorCallback(callback, new Handler());
+            manager.registerDynamicSensorCallback(callback,
+                    new Handler());
         }
     }
 

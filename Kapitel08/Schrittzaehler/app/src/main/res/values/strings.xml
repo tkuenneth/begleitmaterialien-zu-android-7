@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Schrittzähler</string>
+    <string name="reset">Zurücksetzen</string>
+    <string name="no_sensor">Kein Sensor gefunden</string>
+</resources>
