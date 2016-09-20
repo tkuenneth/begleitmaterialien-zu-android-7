@@ -11,10 +11,10 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-
 public class DruckDemo1Activity extends Activity {
 
-    private static final String TAG = DruckDemo1Activity.class.getSimpleName();
+    private static final String TAG =
+            DruckDemo1Activity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,19 +33,24 @@ public class DruckDemo1Activity extends Activity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 // PrintManager-Instanz ermitteln
-                PrintManager printManager = (PrintManager) getSystemService(PRINT_SERVICE);
+                PrintManager printManager =
+                        getSystemService(PrintManager.class);
                 // Der Adapter stellt den Dokumentinhalt bereit
-                PrintDocumentAdapter printAdapter = webView.createPrintDocumentAdapter("Dokumentname");
+                PrintDocumentAdapter printAdapter =
+                        webView.createPrintDocumentAdapter("Dokumentname");
                 // Druckauftrag erstellen und übergeben
                 String jobName = getString(R.string.app_name) + " Dokument";
-                PrintJob printJob = printManager.print(jobName, printAdapter,
+                PrintJob printJob = printManager.print(jobName,
+                        printAdapter,
                         new PrintAttributes.Builder().build());
                 Log.d(TAG, printJob.getInfo().toString());
             }
         });
 
         String htmlDocument = "<html><body><h1>Hallo Android</h1>" +
-                "<p><img src=\"ic_launcher.png\" /><br />Ein Test</p></body></html>";
-        webView.loadDataWithBaseURL("file:///android_asset/", htmlDocument, "text/HTML", "UTF-8", null);
+                "<p><img src=\"ic_launcher.png\" />" +
+                "<br />Ein Test</p></body></html>";
+        webView.loadDataWithBaseURL("file:///android_asset/",
+                htmlDocument, "text/HTML", "UTF-8", null);
     }
 }

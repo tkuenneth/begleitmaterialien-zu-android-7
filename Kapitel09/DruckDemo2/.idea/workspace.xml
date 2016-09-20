@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="51fb6205-3aa8-4e13-a472-18fc85297de6" name="Default" comment="" />
-    <ignored path="ExternalStorageDemo.iws" />
+    <list default="true" id="37fa183e-4496-4f0c-864d-f386dd209143" name="Default" comment="" />
+    <ignored path="DruckDemo2.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,7 +22,10 @@
     </projectState>
   </component>
   <component name="FavoritesManager">
-    <favorites_list name="ExternalStorageDemo" />
+    <favorites_list name="DruckDemo2" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf />
   </component>
   <component name="GradleLocalSettings">
     <option name="availableProjects">
@@ -30,7 +33,7 @@
         <entry>
           <key>
             <ExternalProjectPojo>
-              <option name="name" value="ExternalStorageDemo" />
+              <option name="name" value="DruckDemo2" />
               <option name="path" value="$PROJECT_DIR$" />
             </ExternalProjectPojo>
           </key>
@@ -41,7 +44,7 @@
                 <option name="path" value="$PROJECT_DIR$/app" />
               </ExternalProjectPojo>
               <ExternalProjectPojo>
-                <option name="name" value="ExternalStorageDemo" />
+                <option name="name" value="DruckDemo2" />
                 <option name="path" value="$PROJECT_DIR$" />
               </ExternalProjectPojo>
             </list>
@@ -55,7 +58,7 @@
           <value>
             <list>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the sub-projects of root project 'ExternalStorageDemo'." />
+                <option name="description" value="Displays the sub-projects of root project 'DruckDemo2'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="projects" />
               </ExternalTaskPojo>
@@ -89,7 +92,7 @@
                 <option name="name" value="assembleDebugUnitTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the configuration model of root project 'ExternalStorageDemo'. [incubating]" />
+                <option name="description" value="Displays the configuration model of root project 'DruckDemo2'. [incubating]" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="model" />
               </ExternalTaskPojo>
@@ -99,7 +102,7 @@
                 <option name="name" value="mockableAndroidJar" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the tasks runnable from root project 'ExternalStorageDemo' (some of the displayed tasks may belong to subprojects)." />
+                <option name="description" value="Displays the tasks runnable from root project 'DruckDemo2' (some of the displayed tasks may belong to subprojects)." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="tasks" />
               </ExternalTaskPojo>
@@ -122,7 +125,7 @@
                 <option name="name" value="deviceCheck" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays all dependencies declared in root project 'ExternalStorageDemo'." />
+                <option name="description" value="Displays all dependencies declared in root project 'DruckDemo2'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="dependencies" />
               </ExternalTaskPojo>
@@ -186,7 +189,7 @@
                 <option name="name" value="compileDebugAndroidTestJavaWithJavac" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the components produced by root project 'ExternalStorageDemo'. [incubating]" />
+                <option name="description" value="Displays the components produced by root project 'DruckDemo2'. [incubating]" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="components" />
               </ExternalTaskPojo>
@@ -291,7 +294,7 @@
                 <option name="name" value="uninstallDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the insight into a specific dependency in root project 'ExternalStorageDemo'." />
+                <option name="description" value="Displays the insight into a specific dependency in root project 'DruckDemo2'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="dependencyInsight" />
               </ExternalTaskPojo>
@@ -556,7 +559,7 @@
                 <option name="name" value="generateDebugAssets" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays all buildscript dependencies declared in root project 'ExternalStorageDemo'." />
+                <option name="description" value="Displays all buildscript dependencies declared in root project 'DruckDemo2'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="buildEnvironment" />
               </ExternalTaskPojo>
@@ -664,7 +667,7 @@
                 <option name="name" value="generateReleaseResValues" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the properties of root project 'ExternalStorageDemo'." />
+                <option name="description" value="Displays the properties of root project 'DruckDemo2'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="properties" />
               </ExternalTaskPojo>
@@ -1285,7 +1288,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="C:\Users\tkuen\begleitmaterialien-zu-android-7\Kapitel09\ExternalStorageDemo" value="4388126705303" />
+        <entry key="C:\Users\tkuen\begleitmaterialien-zu-android-7\Kapitel09\DruckDemo2" value="4388376670347" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -1548,6 +1551,14 @@
       <projects_view />
     </option>
   </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/app/src/main/java/com/thomaskuenneth/druckdemo2/DruckDemo2Activity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/thomaskuenneth/druckdemo2/DemoPrintDocumentAdapter.java" />
+      </list>
+    </option>
+  </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
@@ -1565,7 +1576,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="AndroidView" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -1578,7 +1589,50 @@
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="Scratches" />
+      <pane id="AndroidView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DruckDemo2" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DruckDemo2" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DruckDemo2" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="druckdemo2" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
@@ -1587,7 +1641,7 @@
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/sdk" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="device.picker.selection" value="00f3d4f971aa3a56" />
+    <property name="device.picker.selection" value="Nexus_4_API_24" />
   </component>
   <component name="RunManager" selected="Android App.app">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
@@ -1776,11 +1830,11 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="51fb6205-3aa8-4e13-a472-18fc85297de6" name="Default" comment="" />
-      <created>1474394124200</created>
+      <changelist id="37fa183e-4496-4f0c-864d-f386dd209143" name="Default" comment="" />
+      <created>1474382429894</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1474394124200</updated>
+      <updated>1474382429894</updated>
     </task>
     <servers />
   </component>
@@ -1797,8 +1851,8 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1809,8 +1863,8 @@
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1827,5 +1881,35 @@
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/thomaskuenneth/druckdemo2/DruckDemo2Activity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="15" column="16" selection-start-line="0" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-24/android/print/PrintDocumentAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1648">
+          <caret line="108" column="22" selection-start-line="108" selection-start-column="22" selection-end-line="108" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/thomaskuenneth/druckdemo2/DemoPrintDocumentAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2278">
+          <caret line="136" column="0" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#772#773#0" expanded="true" />
+            <element signature="e#810#811#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
