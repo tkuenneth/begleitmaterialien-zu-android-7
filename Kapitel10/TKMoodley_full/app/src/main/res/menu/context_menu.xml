@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_good"
+        android:title="@string/mi_good" />
+    <item
+        android:id="@+id/menu_ok"
+        android:title="@string/mi_ok" />
+    <item
+        android:id="@+id/menu_bad"
+        android:title="@string/mi_bad" />
+    <item
+        android:id="@+id/menu_delete"
+        android:title="@string/mi_delete" />
+</menu>
