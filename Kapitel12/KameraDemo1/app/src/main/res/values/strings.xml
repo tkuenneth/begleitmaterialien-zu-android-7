@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">KameraDemo1</string>
+    <string name="foto">Foto aufnehmen</string>
+    <string name="video">Video aufnehmen</string>
+</resources>

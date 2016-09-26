@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Audio Effekte</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="bass_boost">Bass Boost</string>
+    <string name="virtualizer">Virtualizer</string>
+    <string name="reverb">Hall</string>
+</resources>

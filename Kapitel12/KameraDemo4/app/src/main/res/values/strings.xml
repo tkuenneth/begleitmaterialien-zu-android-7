@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">KameraDemo4</string>
+    <string name="start">Beginnen</string>
+    <string name="end">Beenden</string>
+</resources>

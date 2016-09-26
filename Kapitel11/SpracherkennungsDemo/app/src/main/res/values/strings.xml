@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SpracherkennungsDemo</string>
+    <string name="button">Spracherkennung starten</string>
+    <string name="not_present">Spracherkennung nicht verfügbar</string>
+    <string name="prompt">Willkommen zur Spracherkennungsdemo</string>
+</resources>

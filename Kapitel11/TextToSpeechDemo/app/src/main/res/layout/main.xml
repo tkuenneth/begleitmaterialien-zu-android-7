@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="6dip"
+    >
+    
+	<EditText  
+		android:id="@+id/input"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content" 
+	    android:maxLines="3"
+	    android:hint="@string/hint"
+	    android:gravity="top"
+	    />
+    
+	<Spinner android:id="@+id/locale"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+	/>
+	
+	<Button android:id="@+id/button"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/button"
+	/>
+	        
+</LinearLayout>

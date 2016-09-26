@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TextToSpeechDemo</string>
+    <string name="hint">Den auszugebenden Text eingeben</string>
+	<string name="button">Text vorlesen</string>
+</resources>
