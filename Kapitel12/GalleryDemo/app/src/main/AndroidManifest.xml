@@ -3,9 +3,9 @@
     package="com.thomaskuenneth.gallerydemo">
 
     <application
-        android:icon="@drawable/icon"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:allowBackup="true">
+        android:allowBackup="false">
         <activity
             android:name=".GalleryDemo"
             android:label="@string/app_name">

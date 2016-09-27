@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name">KameraDemo2</string>
     <string name="shoot">Foto aufnehmen</string>
+    <string name="descr">Ein mit der App KameraDemo2 aufgenommenes Foto</string>
 </resources>

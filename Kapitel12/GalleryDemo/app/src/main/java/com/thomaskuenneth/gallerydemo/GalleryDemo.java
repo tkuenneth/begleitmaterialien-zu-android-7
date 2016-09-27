@@ -19,7 +19,9 @@ public class GalleryDemo extends Activity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode,
+                                    int resultCode,
+                                    Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RQ_GALLERY_PICK) {
             if (resultCode == RESULT_OK) {
