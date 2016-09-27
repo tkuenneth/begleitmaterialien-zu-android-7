@@ -1,9 +1,11 @@
 package com.thomaskuenneth.kamerademo2;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,10 +21,14 @@ public class KameraDemo2 extends Activity {
     private static final String TAG =
             KameraDemo2.class.getSimpleName();
 
+    private static final int
+            PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 123;
+
     private static final int IMAGE_CAPTURE = 1;
 
     // Views
     private ImageView imageView;
+    private Button button;
 
     // über diese Uri ist die Aufnahme erreichbar
     private Uri imageUri;
@@ -36,10 +42,35 @@ public class KameraDemo2 extends Activity {
         // Benutzeroberfläche anzeigen
         setContentView(R.layout.main);
         imageView = (ImageView) findViewById(R.id.view);
-        Button button = (Button) findViewById(R.id.shoot);
+        button = (Button) findViewById(R.id.shoot);
         button.setOnClickListener((v) ->
                 startCamera()
         );
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
+            button.setEnabled(false);
+        } else {
+            button.setEnabled(true);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[],
+                                           int[] grantResults) {
+        if ((requestCode == PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE) &&
+                (grantResults.length > 0 && grantResults[0] ==
+                        PackageManager.PERMISSION_GRANTED)) {
+            button.setEnabled(true);
+        }
     }
 
     @Override

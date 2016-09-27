@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ShareViaDemo</string>
+    <string name="menu">Demo Sender</string>
+    <string name="button">Fertig</string>
+    <string name="share_via">Bild weiterleiten mit</string>
+</resources>
