@@ -16,7 +16,6 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +32,7 @@ public class DemoSender extends Activity {
         if (intent != null) {
             if (Intent.ACTION_SEND.equals(intent.getAction())) {
                 // ja, dann Benutzeroberfläche anzeigen
-                setContentView(R.layout.main);
+                setContentView(R.layout.demosender);
                 ImageView imageView = (ImageView) findViewById(R.id.image);
                 // Uri des Bildes
                 final Uri imageUri = (Uri) intent.getExtras().get(
@@ -85,11 +84,13 @@ public class DemoSender extends Activity {
         PackageManager pm = getPackageManager();
         Intent targetIntent = new Intent(Intent.ACTION_SEND);
         targetIntent.setType("image/?");
-        List<ResolveInfo> activities = pm.queryIntentActivities(targetIntent, PackageManager.MATCH_DEFAULT_ONLY);
+        List<ResolveInfo> activities =
+                pm.queryIntentActivities(targetIntent,
+                PackageManager.MATCH_DEFAULT_ONLY);
         // Intents der Liste hinzufügen
         for (ResolveInfo info : activities) {
             String packageName = info.activityInfo.packageName;
-            if ("com.thomaskuenneth.shareviademo".equals(packageName)) {
+            if (getPackageName().equals(packageName)) {
                 // die eigene App ausblenden
                 continue;
             }
@@ -102,10 +103,12 @@ public class DemoSender extends Activity {
         // Chooser aufrufen
         int size = intentList.size();
         if (size > 0) {
-            Intent chooserIntent = Intent.createChooser(intentList.remove(
+            Intent chooserIntent =
+                    Intent.createChooser(intentList.remove(
                     size - 1), getString(R.string.share_via));
             Parcelable[] p = new Parcelable[size - 1];
-            chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, intentList.toArray(p));
+            chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS,
+                    intentList.toArray(p));
             startActivity(chooserIntent);
         }
         finish();
