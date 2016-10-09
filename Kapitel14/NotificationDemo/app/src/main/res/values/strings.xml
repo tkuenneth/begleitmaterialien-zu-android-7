@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">NotificationDemo</string>
+    <string name="ongoing">Laufend</string>
+    <string name="local">Lokal</string>
+    <string name="page">zusätzliche Seite anzeigen</string>
+    <string name="button">Los!</string>
+    <string name="page2">Seite #2</string>
+    <string name="reply">Antwort</string>
+</resources>

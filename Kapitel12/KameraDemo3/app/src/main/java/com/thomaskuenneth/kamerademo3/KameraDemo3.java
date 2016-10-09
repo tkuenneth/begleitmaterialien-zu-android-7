@@ -1,7 +1,8 @@
 package com.thomaskuenneth.kamerademo3;
 
+import android.Manifest;
 import android.app.Activity;
-import android.content.Context;
+import android.content.pm.PackageManager;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCaptureSession;
 import android.hardware.camera2.CameraCharacteristics;
@@ -10,62 +11,85 @@ import android.hardware.camera2.CameraManager;
 import android.hardware.camera2.CaptureRequest;
 import android.hardware.camera2.params.StreamConfigurationMap;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.Size;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class KameraDemo3 extends Activity implements SurfaceHolder.Callback {
+public class KameraDemo3 extends Activity
+        implements SurfaceHolder.Callback {
 
-    private static final String TAG = KameraDemo3.class.getSimpleName();
+    private static final String TAG =
+            KameraDemo3.class.getSimpleName();
+    private static final int PERMISSIONS_REQUEST_CAMERA
+            = 123;
 
     private CameraManager manager;
     private SurfaceHolder holder;
-    private String cameraId;
     private CameraDevice camera;
+    private String cameraId;
     private CameraCaptureSession activeSession;
+
+    private CaptureRequest.Builder builderPreview;
+    private CameraCaptureSession.CaptureCallback
+            captureCallback = null;
+    private CameraCaptureSession.StateCallback captureSessionCallback =
+            new CameraCaptureSession.StateCallback() {
+
+                @Override
+                public void onConfigured(
+                        CameraCaptureSession session) {
+                    try {
+                        session.setRepeatingRequest(
+                                builderPreview.build(),
+                                captureCallback, null);
+                        KameraDemo3.this.activeSession = session;
+                    } catch (CameraAccessException e) {
+                        Log.e(TAG, "onConfigured()", e);
+                    }
+                }
+
+                @Override
+                public void onConfigureFailed(
+                        CameraCaptureSession session) {
+                    Log.e(TAG, "onConfigureFailed()");
+                }
+            };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Benutzeroberfläche anzeigen
         setContentView(R.layout.main);
-        SurfaceView view = (SurfaceView) findViewById(R.id.view);
-        holder = view.getHolder();
-        // CameraManager-Instanz ermitteln
-        manager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
-        // Kamera suchen und auswählen
+        holder = null;
+        camera = null;
         cameraId = null;
-        Size[] sizes = null;
-        try {
-            // vorhandene Kameras ermitteln und auswählen
-            String[] ids = manager.getCameraIdList();
-            for (String id : ids) {
-                CameraCharacteristics cc = manager.getCameraCharacteristics(id);
-                Log.d(TAG, id + ": " + cc.toString());
-                if (cc.get(CameraCharacteristics.LENS_FACING) == CameraCharacteristics.LENS_FACING_BACK) {
-                    cameraId = id;
-                    StreamConfigurationMap configs = cc.get(
-                            CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
-                    sizes = configs.getOutputSizes(SurfaceHolder.class);
-                    break;
-                }
-            }
-        } catch (CameraAccessException e) {
-            Log.e(TAG, "getCameraIdList() oder getCameraCharacteristics()", e);
-        }
-        if ((cameraId == null) || (sizes == null)) {
-            Log.d(TAG, "keine passende Kamera gefunden");
-            finish();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (checkSelfPermission(Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]
+                            {Manifest.permission.CAMERA},
+                    PERMISSIONS_REQUEST_CAMERA);
         } else {
-            final int width = sizes[0].getWidth();
-            final int height = sizes[0].getHeight();
-            holder.setFixedSize(width, height);
+            doIt();
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (holder != null) {
+            holder.addCallback(this);
+        }
+        Log.d(TAG, "onResume()");
     }
 
     @Override
@@ -79,15 +103,21 @@ public class KameraDemo3 extends Activity implements SurfaceHolder.Callback {
             camera.close();
             camera = null;
         }
-        holder.removeCallback(this);
+        if (holder != null) {
+            holder.removeCallback(this);
+        }
         Log.d(TAG, "onPause()");
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        holder.addCallback(this);
-        Log.d(TAG, "onResume()");
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[],
+                                           int[] grantResults) {
+        if ((requestCode == PERMISSIONS_REQUEST_CAMERA) &&
+                (grantResults.length > 0 && grantResults[0] ==
+                        PackageManager.PERMISSION_GRANTED)) {
+            doIt();
+        }
     }
 
     @Override
@@ -98,62 +128,132 @@ public class KameraDemo3 extends Activity implements SurfaceHolder.Callback {
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
         Log.d(TAG, "surfaceCreated()");
-        openCamera();
+        try {
+            openCamera();
+        } catch (SecurityException |
+                CameraAccessException e) {
+            Log.e(TAG, "openCamera()", e);
+        }
     }
 
     @Override
-    public void surfaceChanged(SurfaceHolder holder, int format, int width,
+    public void surfaceChanged(SurfaceHolder holder,
+                               int format, int width,
                                int height) {
         Log.d(TAG, "surfaceChanged()");
     }
 
-    private void openCamera() {
-        try {
-            manager.openCamera(cameraId, new CameraDevice.StateCallback() {
-                @Override
-                public void onOpened(CameraDevice camera) {
-                    Log.d(TAG, "onOpened()");
-                    KameraDemo3.this.camera = camera;
-                    createPreviewCaptureSession();
+    private void doIt() {
+        SurfaceView view =
+                (SurfaceView) findViewById(R.id.view);
+        holder = view.getHolder();
+        // CameraManager-Instanz ermitteln
+        manager = getSystemService(CameraManager.class);
+        Size[] sizes = findCameraFacingBack();
+        if ((cameraId == null) || (sizes == null)) {
+            Log.d(TAG, "keine passende Kamera gefunden");
+            finish();
+        } else {
+            DisplayMetrics metrics =
+                    getResources().getDisplayMetrics();
+            int _w = metrics.widthPixels;
+            int _h = metrics.heightPixels;
+            boolean found = false;
+            for (Size size : sizes) {
+                int width = size.getWidth();
+                int height = size.getHeight();
+                if (width > _w || height > _h) {
+                    continue;
                 }
-
-                @Override
-                public void onDisconnected(CameraDevice camera) {
-                    Log.d(TAG, "onDisconnected()");
-                }
-
-                @Override
-                public void onError(CameraDevice camera, int error) {
-                    Log.d(TAG, "onError()");
-                }
-            }, null);
-        } catch (CameraAccessException e) {
-            Log.e(TAG, "openCamera()", e);
+                holder.setFixedSize(width, height);
+                found = true;
+                break;
+            }
+            if (!found) {
+                Log.d(TAG, "Zu groß");
+                finish();
+            }
         }
+    }
+
+    /**
+     * Sucht Kamera auf Geräterückseite und liefert
+     * Infos zur Auflösung. Setzt auch die Variable
+     * <code>cameraId</code>
+     *
+     * @return Auflösung
+     */
+    private Size[] findCameraFacingBack() {
+        Size[] sizes = null;
+        try {
+            boolean found = false;
+            // vorhandene Kameras ermitteln und auswählen
+            String[] ids = manager.getCameraIdList();
+            for (String id : ids) {
+                CameraCharacteristics cc =
+                        manager.getCameraCharacteristics(id);
+                Log.d(TAG, id + ": " + cc.toString());
+                Integer lensFacing =
+                        cc.get(CameraCharacteristics.LENS_FACING);
+                if ((lensFacing != null) &&
+                        (lensFacing ==
+                                CameraCharacteristics.LENS_FACING_BACK)) {
+                    if (found) {
+                        continue;
+                    }
+                    found = true;
+                    cameraId = id;
+                    StreamConfigurationMap configs = cc.get(
+                            CameraCharacteristics.
+                                    SCALER_STREAM_CONFIGURATION_MAP);
+                    if (configs != null) {
+                        sizes = configs.getOutputSizes(SurfaceHolder.class);
+                    }
+                }
+            }
+        } catch (CameraAccessException |
+                NullPointerException e) {
+            Log.e(TAG, "findCameraFacingBack()", e);
+        }
+        return sizes;
+    }
+
+    private void openCamera() throws
+            SecurityException,
+            CameraAccessException {
+        manager.openCamera(cameraId,
+                new CameraDevice.StateCallback() {
+
+                    @Override
+                    public void onOpened(CameraDevice camera) {
+                        Log.d(TAG, "onOpened()");
+                        KameraDemo3.this.camera = camera;
+                        createPreviewCaptureSession();
+                    }
+
+                    @Override
+                    public void onDisconnected(CameraDevice camera) {
+                        Log.d(TAG, "onDisconnected()");
+                    }
+
+                    @Override
+                    public void onError(CameraDevice camera,
+                                        int error) {
+                        Log.d(TAG, "onError()");
+                    }
+                }, null);
     }
 
     private void createPreviewCaptureSession() {
         List<Surface> outputs = new ArrayList<>();
         outputs.add(holder.getSurface());
         try {
-            final CaptureRequest.Builder builder = camera.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW);
-            builder.addTarget(holder.getSurface());
-            camera.createCaptureSession(outputs, new CameraCaptureSession.StateCallback() {
-                @Override
-                public void onConfigured(CameraCaptureSession session) {
-                    try {
-                        session.setRepeatingRequest(builder.build(), null, null);
-                        KameraDemo3.this.activeSession = session;
-                    } catch (CameraAccessException e) {
-                        Log.e(TAG, "capture()", e);
-                    }
-                }
-
-                @Override
-                public void onConfigureFailed(CameraCaptureSession session) {
-                    Log.e(TAG, "onConfigureFailed()");
-                }
-            }, null);
+            builderPreview = camera.createCaptureRequest(
+                    CameraDevice.TEMPLATE_PREVIEW);
+            builderPreview.addTarget(holder.getSurface());
+            camera.createCaptureSession(outputs,
+                    captureSessionCallback,
+                    new Handler());
         } catch (CameraAccessException e) {
             Log.e(TAG, "createPreviewCaptureSession()", e);
         }

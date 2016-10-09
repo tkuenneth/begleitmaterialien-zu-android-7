@@ -3,4 +3,5 @@
     <string name="app_name">KameraDemo4</string>
     <string name="start">Beginnen</string>
     <string name="end">Beenden</string>
+    <string name="no_app">Keine geeignete App gefunden</string>
 </resources>
