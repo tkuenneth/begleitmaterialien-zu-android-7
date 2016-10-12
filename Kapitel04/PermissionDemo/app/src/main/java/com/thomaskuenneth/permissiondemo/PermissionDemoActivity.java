@@ -87,8 +87,9 @@ public class PermissionDemoActivity extends Activity {
         String[] selectionArgs =
                 {Integer.toString(CallLog.Calls.MISSED_TYPE)};
         try {
-            Cursor c = getContentResolver().query(CallLog.Calls.CONTENT_URI,
-                    projection, selection, selectionArgs, null);
+            Cursor c =
+                    getContentResolver().query(CallLog.Calls.CONTENT_URI,
+                            projection, selection, selectionArgs, null);
             if (c != null) {
                 missedCalls = c.getCount();
                 c.close();

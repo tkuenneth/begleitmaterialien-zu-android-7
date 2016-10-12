@@ -10,9 +10,10 @@ import android.content.Context;
  * <li>eine Zahl, die das Sternzeichnen kennzeichnet</li>
  * </ul>
  * <p/>
- * Die Methode {@link #getIdForDrawable()} liefert einen Wert, der für das
- * Zeichnen des Tierkreiszeichens verwendet werden kann. Damit das
- * funktioniert, muss das Sternzeichen aus {@code R.string} belegt werden,
+ * Die Methode {@link #getIdForDrawable()} liefert einen Wert, der für
+ * das Zeichnen des Tierkreiszeichens verwendet werden kann. Damit das
+ * funktioniert, muss das Sternzeichen aus {@code R.string} belegt
+ * werden.
  *
  * @author Thomas Künneth
  * @see Zodiak
@@ -47,7 +48,8 @@ public final class Tierkreiszeichen {
     }
 
     /**
-     * Liefert einen Wert aus {@code R.drawable}, der für das Zeichnen des
+     * Liefert einen Wert aus {@code R.drawable},
+     * der für das Zeichnen des
      * Sternzeichens verwendet werden kann.
      *
      * @return Wert aus {@code R.drawable}

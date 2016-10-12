@@ -22,7 +22,6 @@ public class FibonacciDemoActivity extends Activity {
         switch (n) {
             case 0:
                 fib = 0;
-                break;
             case 1:
                 fib = 1;
                 break;

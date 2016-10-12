@@ -90,7 +90,8 @@ public class FragmentDemo3Activity extends Activity {
                 // "in place"-Darstellung
                 getListView().setItemChecked(index, true);
                 DetailsFragment details = (DetailsFragment)
-                        getFragmentManager().findFragmentById(R.id.details);
+                        getFragmentManager()
+                                .findFragmentById(R.id.details);
                 if (details == null || details.getIndex() != index) {
                     // neues Fragment passend zum selektierten
                     // Eintrag erzeugen und anzeigen

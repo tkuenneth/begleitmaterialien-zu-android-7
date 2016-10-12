@@ -33,13 +33,16 @@ public class TierkreiszeichenAdapter extends BaseAdapter {
         inflator = LayoutInflater.from(context);
         // Tierkreiszeichen für alle Monate ermitteln
         zodiak = new ArrayList<>();
-        for (int monat = Calendar.JANUARY; monat <= Calendar.DECEMBER; monat++) {
+        for (int monat = Calendar.JANUARY;
+             monat <= Calendar.DECEMBER; monat++) {
             Tierkreiszeichen zeichen = Zodiak
                     .getTierkreiszeichenFuerMonat(monat);
             zodiak.add(zeichen);
         }
         // Legt fest, in welchem Format das Datum ausgegeben wird
-        df = new SimpleDateFormat(context.getString(R.string.format_string), Locale.US);
+        df = new SimpleDateFormat(context.getString(
+                R.string.format_string),
+                Locale.US);
         cal = Calendar.getInstance();
     }
 
@@ -59,28 +62,28 @@ public class TierkreiszeichenAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position,
+                        View convertView, ViewGroup parent) {
         ViewHolder holder;
-
         // falls nötig, convertView bauen
         if (convertView == null) {
             // Layoutdatei entfalten
-            convertView = inflator.inflate(R.layout.icon_text_text, parent,
-                    false);
-
+            convertView = inflator.inflate(R.layout.icon_text_text,
+                    parent, false);
             // Holder erzeugen
             holder = new ViewHolder();
-            holder.name = (TextView) convertView.findViewById(R.id.text1);
+            holder.name =
+                    (TextView) convertView.findViewById(R.id.text1);
             holder.datumsbereich = (TextView) convertView
                     .findViewById(R.id.text2);
-            holder.icon = (ImageView) convertView.findViewById(R.id.icon);
+            holder.icon =
+                    (ImageView) convertView.findViewById(R.id.icon);
 
             convertView.setTag(holder);
         } else {
             // Holder bereits vorhanden
             holder = (ViewHolder) convertView.getTag();
         }
-
         Context context = parent.getContext();
         Tierkreiszeichen zeichen = (Tierkreiszeichen) getItem(position);
         holder.name.setText(zeichen.getName(context));
@@ -97,7 +100,6 @@ public class TierkreiszeichenAdapter extends BaseAdapter {
         String datum2 = df.format(cal.getTime());
         holder.datumsbereich.setText(context.getString(R.string.interval,
                 datum1, datum2));
-
         return convertView;
     }
 

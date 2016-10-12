@@ -22,10 +22,12 @@ public final class Zodiak {
 
     private Zodiak() {
         map = new HashMap<>();
-        map.put(Calendar.JANUARY, new Tierkreiszeichen(21, Calendar.JANUARY,
-                R.string.aquarius));
-        map.put(Calendar.FEBRUARY, new Tierkreiszeichen(20, Calendar.FEBRUARY,
-                R.string.pisces));
+        map.put(Calendar.JANUARY,
+                new Tierkreiszeichen(21, Calendar.JANUARY,
+                        R.string.aquarius));
+        map.put(Calendar.FEBRUARY,
+                new Tierkreiszeichen(20, Calendar.FEBRUARY,
+                        R.string.pisces));
         map.put(Calendar.MARCH, new Tierkreiszeichen(21, Calendar.MARCH,
                 R.string.aries));
         map.put(Calendar.APRIL, new Tierkreiszeichen(21, Calendar.APRIL,
@@ -35,17 +37,22 @@ public final class Zodiak {
         map.put(Calendar.JUNE, new Tierkreiszeichen(22, Calendar.JUNE,
                 R.string.cancer));
         map.put(Calendar.JULY,
-                new Tierkreiszeichen(24, Calendar.JULY, R.string.leo));
-        map.put(Calendar.AUGUST, new Tierkreiszeichen(24, Calendar.AUGUST,
-                R.string.virgo));
+                new Tierkreiszeichen(24, Calendar.JULY,
+                        R.string.leo));
+        map.put(Calendar.AUGUST,
+                new Tierkreiszeichen(24, Calendar.AUGUST,
+                        R.string.virgo));
         map.put(Calendar.SEPTEMBER, new Tierkreiszeichen(24,
                 Calendar.SEPTEMBER, R.string.libra));
-        map.put(Calendar.OCTOBER, new Tierkreiszeichen(24, Calendar.OCTOBER,
-                R.string.scorpius));
-        map.put(Calendar.NOVEMBER, new Tierkreiszeichen(23, Calendar.NOVEMBER,
-                R.string.sagittarius));
-        map.put(Calendar.DECEMBER, new Tierkreiszeichen(22, Calendar.DECEMBER,
-                R.string.capricornus));
+        map.put(Calendar.OCTOBER,
+                new Tierkreiszeichen(24, Calendar.OCTOBER,
+                        R.string.scorpius));
+        map.put(Calendar.NOVEMBER,
+                new Tierkreiszeichen(23, Calendar.NOVEMBER,
+                        R.string.sagittarius));
+        map.put(Calendar.DECEMBER,
+                new Tierkreiszeichen(22, Calendar.DECEMBER,
+                        R.string.capricornus));
     }
 
     /**
