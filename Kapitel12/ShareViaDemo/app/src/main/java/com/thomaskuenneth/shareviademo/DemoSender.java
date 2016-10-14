@@ -33,7 +33,8 @@ public class DemoSender extends Activity {
             if (Intent.ACTION_SEND.equals(intent.getAction())) {
                 // ja, dann Benutzeroberfläche anzeigen
                 setContentView(R.layout.demosender);
-                ImageView imageView = (ImageView) findViewById(R.id.image);
+                ImageView imageView =
+                        (ImageView) findViewById(R.id.image);
                 // Uri des Bildes
                 final Uri imageUri = (Uri) intent.getExtras().get(
                         Intent.EXTRA_STREAM);
@@ -86,7 +87,7 @@ public class DemoSender extends Activity {
         targetIntent.setType("image/?");
         List<ResolveInfo> activities =
                 pm.queryIntentActivities(targetIntent,
-                PackageManager.MATCH_DEFAULT_ONLY);
+                        PackageManager.MATCH_DEFAULT_ONLY);
         // Intents der Liste hinzufügen
         for (ResolveInfo info : activities) {
             String packageName = info.activityInfo.packageName;
@@ -105,7 +106,7 @@ public class DemoSender extends Activity {
         if (size > 0) {
             Intent chooserIntent =
                     Intent.createChooser(intentList.remove(
-                    size - 1), getString(R.string.share_via));
+                            size - 1), getString(R.string.share_via));
             Parcelable[] p = new Parcelable[size - 1];
             chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS,
                     intentList.toArray(p));

@@ -13,7 +13,6 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
-
 import java.io.IOException;
 
 public class KameraDemo2 extends Activity {
@@ -51,7 +50,8 @@ public class KameraDemo2 extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
-        if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        if (checkSelfPermission(
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{
                             Manifest.permission.WRITE_EXTERNAL_STORAGE},
@@ -66,7 +66,8 @@ public class KameraDemo2 extends Activity {
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[],
                                            int[] grantResults) {
-        if ((requestCode == PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE) &&
+        if ((requestCode ==
+                PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE) &&
                 (grantResults.length > 0 && grantResults[0] ==
                         PackageManager.PERMISSION_GRANTED)) {
             button.setEnabled(true);

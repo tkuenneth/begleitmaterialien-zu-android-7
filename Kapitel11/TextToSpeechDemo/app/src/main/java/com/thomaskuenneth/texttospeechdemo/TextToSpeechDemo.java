@@ -19,7 +19,8 @@ import java.io.File;
 import java.util.Hashtable;
 import java.util.Locale;
 
-public class TextToSpeechDemo extends Activity implements OnInitListener {
+public class TextToSpeechDemo extends Activity
+        implements OnInitListener {
 
     private static final int RQ_CHECK_TTS_DATA = 1;
     private static final String TAG =
@@ -63,7 +64,8 @@ public class TextToSpeechDemo extends Activity implements OnInitListener {
         super.onActivityResult(requestCode, resultCode, data);
         // Sind Sprachpakete vorhanden?
         if (requestCode == RQ_CHECK_TTS_DATA) {
-            if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
+            if (resultCode ==
+                    TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
                 // Initialisierung der Sprachkomponente starten
                 tts = new TextToSpeech(this, this);
             } else {
@@ -105,7 +107,8 @@ public class TextToSpeechDemo extends Activity implements OnInitListener {
                         Environment.DIRECTORY_PODCASTS),
                         last_utterance_id
                                 + ".wav");
-                tts.synthesizeToFile(text, null, file, last_utterance_id);
+                tts.synthesizeToFile(text, null, file,
+                        last_utterance_id);
             }
         });
         tts.setOnUtteranceProgressListener(

@@ -141,10 +141,14 @@ public class KameraDemo4 extends Activity {
             try {
                 // Recorder vorbereiten
                 recorder = new MediaRecorder();
-                recorder.setVideoSource(MediaRecorder.VideoSource.SURFACE);
-                recorder.setAudioSource(MediaRecorder.AudioSource.CAMCORDER);
-                recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
-                recorder.setVideoEncoder(MediaRecorder.VideoEncoder.H264);
+                recorder.setVideoSource(
+                        MediaRecorder.VideoSource.SURFACE);
+                recorder.setAudioSource(
+                        MediaRecorder.AudioSource.CAMCORDER);
+                recorder.setOutputFormat(
+                        MediaRecorder.OutputFormat.MPEG_4);
+                recorder.setVideoEncoder(
+                        MediaRecorder.VideoEncoder.H264);
                 recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
                 recorder.setVideoSize(width, height);
                 recorder.setOutputFile(getFilename());
@@ -162,7 +166,8 @@ public class KameraDemo4 extends Activity {
                             }
 
                             @Override
-                            public void onDisconnected(CameraDevice camera) {
+                            public void onDisconnected(
+                                    CameraDevice camera) {
                                 Log.d(TAG, "onDisconnected()");
                             }
 
@@ -197,7 +202,8 @@ public class KameraDemo4 extends Activity {
                         }
 
                         @Override
-                        public void onConfigureFailed(CameraCaptureSession session) {
+                        public void onConfigureFailed(
+                                CameraCaptureSession session) {
                             Log.e(TAG, "onConfigureFailed()");
                         }
                     }, null);

@@ -4,7 +4,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a793ba66-d15a-4593-8409-c0c6eb9e40ff" name="Default" comment="" />
+    <list default="true" id="9e60ec41-b856-49a0-a7a2-394bd095da4c" name="Default" comment="" />
     <ignored path="FileDemo3.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -1584,13 +1584,13 @@
     <panes />
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
+    <property name="settings.editor.selected.configurable" value="preferences.general" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="android.project.structure.last.selected" value="SDK Location" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/sdk" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="device.picker.selection" value="00f3d4f971aa3a56" />
+    <property name="device.picker.selection" value="Nexus_4_API_24" />
   </component>
   <component name="RunManager" selected="Android App.app">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
@@ -1779,11 +1779,11 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a793ba66-d15a-4593-8409-c0c6eb9e40ff" name="Default" comment="" />
-      <created>1474393997485</created>
+      <changelist id="9e60ec41-b856-49a0-a7a2-394bd095da4c" name="Default" comment="" />
+      <created>1476458318331</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1474393997485</updated>
+      <updated>1476458318331</updated>
     </task>
     <servers />
   </component>

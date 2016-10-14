@@ -207,7 +207,8 @@ public class KameraDemo3 extends Activity
                             CameraCharacteristics.
                                     SCALER_STREAM_CONFIGURATION_MAP);
                     if (configs != null) {
-                        sizes = configs.getOutputSizes(SurfaceHolder.class);
+                        sizes =
+                                configs.getOutputSizes(SurfaceHolder.class);
                     }
                 }
             }

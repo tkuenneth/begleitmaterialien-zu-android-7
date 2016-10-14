@@ -101,7 +101,8 @@ public class TKMoodleyProvider extends ContentProvider {
     }
 
     @Override
-    public int delete(Uri uri, String selection, String[] selectionArgs) {
+    public int delete(Uri uri, String selection,
+                      String[] selectionArgs) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         int count;
         switch (uriMatcher.match(uri)) {
@@ -116,8 +117,9 @@ public class TKMoodleyProvider extends ContentProvider {
                         TKMoodleyOpenHandler._ID
                                 + " = "
                                 + id
-                                + (!TextUtils.isEmpty(selection) ? " AND ("
-                                + selection + ')' : ""), selectionArgs);
+                                + (!TextUtils.isEmpty(selection)
+                                ? " AND (" + selection + ')'
+                                : ""), selectionArgs);
                 break;
             default:
                 throw new IllegalArgumentException("Unknown URI " + uri);
