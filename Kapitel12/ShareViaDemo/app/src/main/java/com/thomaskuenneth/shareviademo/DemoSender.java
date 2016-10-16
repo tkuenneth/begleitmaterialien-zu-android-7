@@ -1,9 +1,9 @@
 package com.thomaskuenneth.shareviademo;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.ColorMatrix;
@@ -11,51 +11,73 @@ import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
+
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class DemoSender extends Activity {
 
-    private static final String TAG = DemoSender.class.getSimpleName();
+    private static final String TAG =
+            DemoSender.class.getSimpleName();
+    private static final int PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE =
+            123;
+
+    private Bitmap greyscaleBitmap;
 
     @Override
     public void onCreate(Bundle state) {
         super.onCreate(state);
-        // Wurde ein Intent übermittelt?
         Intent intent = getIntent();
-        if (intent != null) {
-            if (Intent.ACTION_SEND.equals(intent.getAction())) {
-                // ja, dann Benutzeroberfläche anzeigen
-                setContentView(R.layout.demosender);
-                ImageView imageView =
-                        (ImageView) findViewById(R.id.image);
-                // Uri des Bildes
-                final Uri imageUri = (Uri) intent.getExtras().get(
-                        Intent.EXTRA_STREAM);
-                // Button
-                final Button button = (Button) findViewById(R.id.button);
-                button.setOnClickListener((v) ->
-                        share(imageUri));
-                try {
-                    // Bitmap erzeugen
-                    Bitmap bm1 = MediaStore.Images.Media.getBitmap(
-                            getContentResolver(), imageUri);
-                    // in Graustufen umwandeln
-                    Bitmap bm2 = toGrayscale(bm1);
-                    // und anzeigen
-                    imageView.setImageBitmap(bm2);
-                } catch (IOException e) { // FileNotFoundException
-                    Log.e(TAG, e.getClass().getSimpleName(), e);
-                }
+        if ((intent != null) &&
+                (Intent.ACTION_SEND.equals(intent.getAction()))) {
+            setContentView(R.layout.demosender);
+            ImageView imageView =
+                    (ImageView) findViewById(R.id.image);
+            // Uri des erhaltenen Bildes
+            Uri imageUri = (Uri) intent.getExtras().get(
+                    Intent.EXTRA_STREAM);
+            try {
+                // Bitmap erzeugen
+                Bitmap bm1 = MediaStore.Images.Media.getBitmap(
+                        getContentResolver(), imageUri);
+                // in Graustufen umwandeln und anzeigen
+                greyscaleBitmap = toGrayscale(bm1);
+                bm1.recycle();
+                imageView.setImageBitmap(greyscaleBitmap);
+            } catch (IOException e) {
+                Log.e(TAG, e.getClass().getSimpleName(), e);
             }
+            // Button
+            final Button button = (Button) findViewById(R.id.button);
+            button.setOnClickListener((v) -> {
+                if (checkSelfPermission(
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    requestPermissions(new String[]
+                                    {Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                            PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
+                } else {
+                    share();
+                }
+            });
         } else {
-            // nein, dann beenden
+            finish();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[],
+                                           int[] grantResults) {
+        if ((requestCode ==
+                PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE) &&
+                (grantResults.length > 0 && grantResults[0] ==
+                        PackageManager.PERMISSION_GRANTED)) {
+            share();
+        } else {
             finish();
         }
     }
@@ -79,39 +101,13 @@ public class DemoSender extends Activity {
         return desti;
     }
 
-    private void share(Uri uri) {
-        List<Intent> intentList = new ArrayList<>();
-        // Activities suchen, die auf ACTION_SEND reagieren
-        PackageManager pm = getPackageManager();
-        Intent targetIntent = new Intent(Intent.ACTION_SEND);
-        targetIntent.setType("image/?");
-        List<ResolveInfo> activities =
-                pm.queryIntentActivities(targetIntent,
-                        PackageManager.MATCH_DEFAULT_ONLY);
-        // Intents der Liste hinzufügen
-        for (ResolveInfo info : activities) {
-            String packageName = info.activityInfo.packageName;
-            if (getPackageName().equals(packageName)) {
-                // die eigene App ausblenden
-                continue;
-            }
-            // das zu feuernde Intent bauen und hinzufügen
-            Intent intent = new Intent(Intent.ACTION_SEND, uri);
-            intent.setType("image/?");
-            intent.setPackage(packageName);
-            intentList.add(intent);
-        }
-        // Chooser aufrufen
-        int size = intentList.size();
-        if (size > 0) {
-            Intent chooserIntent =
-                    Intent.createChooser(intentList.remove(
-                            size - 1), getString(R.string.share_via));
-            Parcelable[] p = new Parcelable[size - 1];
-            chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS,
-                    intentList.toArray(p));
-            startActivity(chooserIntent);
-        }
-        finish();
+    private void share() {
+        String uri = MediaStore.Images.Media.insertImage(
+                getContentResolver(),
+                greyscaleBitmap, "Titel", "Beschreibung");
+        Uri _uri = Uri.parse(uri);
+        Intent intent = new Intent(Intent.ACTION_VIEW, _uri);
+        intent.setType("image/?");
+        startActivity(intent);
     }
 }

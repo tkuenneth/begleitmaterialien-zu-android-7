@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">ShareViaDemo</string>
-    <string name="menu">Demo Sender</string>
+    <string name="menu">In Graustufen unwandeln</string>
     <string name="button">Fertig</string>
-    <string name="share_via">Bild weiterleiten mit</string>
-    <string name="pick">Bild auswählen</string>
+    <string name="view">Galerie oder Fotos-App starten</string>
 </resources>
