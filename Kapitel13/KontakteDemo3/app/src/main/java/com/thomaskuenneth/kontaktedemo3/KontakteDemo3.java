@@ -61,11 +61,14 @@ public class KontakteDemo3 extends Activity {
         String[] mainQueryProjection = {ContactsContract.Contacts._ID};
         String mainQuerySelection =
                 ContactsContract.Contacts.IN_VISIBLE_GROUP
-                        + " = ?" + " AND " + ContactsContract.Contacts.DISPLAY_NAME
+                        + " = ?" + " AND "
+                        + ContactsContract.Contacts.DISPLAY_NAME
                         + " is ?";
-        String[] mainQuerySelectionArgs = new String[]{"1", "Testperson"};
+        String[] mainQuerySelectionArgs = new String[]
+                {"1", "Testperson"};
         Cursor mainQueryCursor = contentResolver.query(
-                ContactsContract.Contacts.CONTENT_URI, mainQueryProjection,
+                ContactsContract.Contacts.CONTENT_URI,
+                mainQueryProjection,
                 mainQuerySelection, mainQuerySelectionArgs, null);
         if (mainQueryCursor != null) {
             if (mainQueryCursor.moveToNext()) {
@@ -152,16 +155,19 @@ public class KontakteDemo3 extends Activity {
                 String[] rawSelectionArgs = new String[]{contactId};
                 // Werte für Tabellenzeile vorbereiten
                 ContentValues values = new ContentValues();
-                values.put(ContactsContract.CommonDataKinds.Event.START_DATE,
+                values.put(ContactsContract.CommonDataKinds
+                                .Event.START_DATE,
                         DATE_FORMAT.format(new Date()));
                 values.put(
                         ContactsContract.Data.MIMETYPE,
-                        ContactsContract.CommonDataKinds.Event.CONTENT_ITEM_TYPE);
+                        ContactsContract.CommonDataKinds
+                                .Event.CONTENT_ITEM_TYPE);
                 values.put(ContactsContract.CommonDataKinds.Event.TYPE,
                         ContactsContract.CommonDataKinds.Event.TYPE_BIRTHDAY);
                 // alle RawContacts befüllen
                 Cursor c = contentResolver.query(RawContacts.CONTENT_URI,
-                        rawProjection, rawSelection, rawSelectionArgs, null);
+                        rawProjection, rawSelection,
+                        rawSelectionArgs, null);
                 if (c != null) {
                     while (c.moveToNext()) {
                         String rawContactId = c.getString(0);
@@ -169,7 +175,8 @@ public class KontakteDemo3 extends Activity {
                                 ContactsContract.CommonDataKinds.Event.RAW_CONTACT_ID,
                                 rawContactId);
                         Uri uri = contentResolver.insert(
-                                ContactsContract.Data.CONTENT_URI, values);
+                                ContactsContract.Data.CONTENT_URI,
+                                values);
                         Log.d(TAG,
                                 "   ---> Hinzufügen des Geburtstags "
                                         + "für RawContacts-Id "

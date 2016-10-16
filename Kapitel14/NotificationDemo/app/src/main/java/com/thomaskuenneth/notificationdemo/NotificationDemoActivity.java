@@ -37,9 +37,11 @@ public class NotificationDemoActivity extends Activity {
         // Eingabefeld
         edittext = (EditText) findViewById(R.id.edittext);
         edittext.addTextChangedListener(new TextWatcher() {
+
             @Override
             public void beforeTextChanged(CharSequence s,
-                                          int start, int count, int after) {
+                                          int start, int count,
+                                          int after) {
             }
 
             @Override
@@ -141,7 +143,8 @@ public class NotificationDemoActivity extends Activity {
                         .setLabel(replyLabel)
                         .setChoices(choices)
                         .build();
-        return new NotificationCompat.Action.Builder(R.drawable.ic_launcher,
+        return new NotificationCompat.Action.Builder(
+                R.drawable.ic_launcher,
                 getString(R.string.app_name), pendingIntent)
                 .addRemoteInput(remoteInput)
                 .build();
