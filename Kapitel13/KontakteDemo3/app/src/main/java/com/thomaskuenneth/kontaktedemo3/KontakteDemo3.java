@@ -118,7 +118,7 @@ public class KontakteDemo3 extends Activity {
                     d = cal.getTime();
                     date = DATE_FORMAT.format(d);
                     Log.d(TAG, "neues Geburtsdatum: " + date);
-                    // abelle aktualisieren
+                    // Tabelle aktualisieren
                     String updateWhere =
                             ContactsContract.CommonDataKinds.Event._ID
                                     + " = ?"
