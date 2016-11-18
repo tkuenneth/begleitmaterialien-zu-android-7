@@ -23,7 +23,7 @@ public class KalenderDemo1 extends Activity {
         cal.add(Calendar.HOUR_OF_DAY, 1);
         Date to = cal.getTime();
         // Termin anlegen
-        createEntry("Android 5", "Hallo lieber Leser", from, to, false);
+        createEntry("Android 7", "Hallo lieber Leser", from, to, false);
         finish();
     }
 
