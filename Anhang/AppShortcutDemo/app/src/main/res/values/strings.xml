@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">AppShortcutDemo</string>
+    <string name="static_shortcut">statisch</string>
+    <string name="dynamic_shortcut">dynamisch</string>
+</resources>

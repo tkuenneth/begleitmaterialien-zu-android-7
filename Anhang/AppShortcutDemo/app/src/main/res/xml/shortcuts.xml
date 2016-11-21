@@ -1,0 +1,18 @@
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_save"
+        android:shortcutId="static1"
+        android:shortcutShortLabel="@string/static_shortcut">
+        <intent
+            android:action
+                ="com.thomaskuenneth.appshortcutdemo.AppShortcut"
+            android:targetClass
+                ="com.thomaskuenneth.appshortcutdemo.AppShortcutActivity"
+            android:targetPackage
+                ="com.thomaskuenneth.appshortcutdemo"
+            />
+        <categories
+            android:name="android.shortcut.conversation" />
+    </shortcut>
+</shortcuts>
