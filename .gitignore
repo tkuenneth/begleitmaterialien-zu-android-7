@@ -1,4 +1,3 @@
-to_do/
 build/
 *.apk
 *.ap_
@@ -18,5 +17,4 @@ captures/
 .idea/libraries
 gen-external-apklibs
 .DS_Store
-outtakes/
 C64WatchFace/Grafiken/
