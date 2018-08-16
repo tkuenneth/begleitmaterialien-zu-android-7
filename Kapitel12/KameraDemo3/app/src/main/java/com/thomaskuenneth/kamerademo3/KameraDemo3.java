@@ -18,8 +18,10 @@ import android.util.Size;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Exchanger;
 
 public class KameraDemo3 extends Activity
         implements SurfaceHolder.Callback {
@@ -49,6 +51,7 @@ public class KameraDemo3 extends Activity
                                 builderPreview.build(),
                                 captureCallback, null);
                         KameraDemo3.this.activeSession = session;
+
                     } catch (CameraAccessException e) {
                         Log.e(TAG, "onConfigured()", e);
                     }
@@ -73,6 +76,11 @@ public class KameraDemo3 extends Activity
     @Override
     protected void onStart() {
         super.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         if (checkSelfPermission(Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]
@@ -81,13 +89,18 @@ public class KameraDemo3 extends Activity
         } else {
             doIt();
         }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
         if (holder != null) {
             holder.addCallback(this);
+        }
+        SurfaceView view =
+                (SurfaceView) findViewById(R.id.view);
+        if (view.isShown()) {
+            try {
+                openCamera();
+            } catch (SecurityException |
+                    CameraAccessException e) {
+                Log.e(TAG, "openCamera()", e);
+            }
         }
         Log.d(TAG, "onResume()");
     }
@@ -255,7 +268,7 @@ public class KameraDemo3 extends Activity
             camera.createCaptureSession(outputs,
                     captureSessionCallback,
                     new Handler());
-        } catch (CameraAccessException e) {
+        } catch (Exception e) {
             Log.e(TAG, "createPreviewCaptureSession()", e);
         }
     }
